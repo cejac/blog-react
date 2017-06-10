@@ -15,9 +15,14 @@ renderField(field) {
   )
 }
 
+onSubmit(values) {
+  console.log(values);
+}
+
   render() {
+    const { handleSubmit } = this.props;
     return (
-      <form>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field
           label="Title"
           name='title'
@@ -33,6 +38,7 @@ renderField(field) {
           name='content'
           component={this.renderField}
         />
+        <button type='submit' className='btn btn-primary'>Submit</button>
       </form>
     )
   }
@@ -45,7 +51,7 @@ function validate(values) {
     errors.titile = 'Enter a title';
   }
 
-  if(!value.categories) {
+  if(!values.categories) {
     errors.categories = 'Enter a category'
   }
 
