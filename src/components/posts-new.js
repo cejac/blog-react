@@ -23,8 +23,8 @@ renderField(field) {
           component={this.renderField}
         />
         <Field
-          label="Tags"
-          name='tags'
+          label="Categories"
+          name='categories'
           component={this.renderField}
         />
         <Field
