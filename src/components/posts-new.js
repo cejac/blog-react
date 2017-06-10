@@ -10,6 +10,7 @@ renderField(field) {
         type='text'
         {...field.input}
       />
+      {field.meta.error}
     </div>
   )
 }
@@ -37,6 +38,25 @@ renderField(field) {
   }
 }
 
+function validate(values) {
+  const errors = {};
+
+  if(!values.title){
+    errors.titile = 'Enter a title';
+  }
+
+  if(!value.categories) {
+    errors.categories = 'Enter a category'
+  }
+
+  if(!values.content) {
+    errors.conent = 'Enter conent'
+  }
+
+  return errors;
+}
+
 export default reduxForm({
+  validate,
   form: 'PostsNewForm' //make sure this is unique so it does not share state with any other forms
 })(PostsNew);
